@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78c0d4907f0bbd46a21d2d85592f86f, type: 3}
   m_Name: hour_3
   m_EditorClassIdentifier: 
-  monsterSpeed: 0.06
+  monsterSpeed: 0.08
   logs: 6
   logBurnSpeed: 0.8
   timeScale: 0.8
-  diffucultyAdjustment: 0.96
+  diffucultyAdjustment: 1
   isAM: 1
   hourString: 12

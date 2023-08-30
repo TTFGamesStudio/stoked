@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78c0d4907f0bbd46a21d2d85592f86f, type: 3}
   m_Name: hour_5
   m_EditorClassIdentifier: 
-  monsterSpeed: 0.08
+  monsterSpeed: 0.1
   logs: 7
   logBurnSpeed: 1.2
   timeScale: 0.9
