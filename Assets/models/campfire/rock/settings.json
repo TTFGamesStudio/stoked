@@ -1,0 +1,22 @@
+{
+  "prompt_text": "stylized cracked stone, rock rough, low poly",
+  "patch": {
+    "ext": "png",
+    "dtype": "uint8",
+    "width": 512,
+    "height": 512,
+    "url": "https://static.withpoly.com/v3-voronoi/textures/patches/8d5d4b43-883f-4a7c-9988-4a1be8325a4b.png",
+    "patch_id": "22Zj6SoenY"
+  },
+  "seamless_prompt_text": "stylized cracked stone, rock rough, low poly",
+  "seamless_patch_scale": 0.8,
+  "upscale_prompt_text": "stylized cracked stone, rock rough, low poly",
+  "upscale_resolution": 1024,
+  "is_seamless": true,
+  "pbr_mode": "general",
+  "pbr_generate_color": true,
+  "pbr_generate_normal": true,
+  "pbr_generate_height": true,
+  "pbr_generate_ao": true,
+  "pbr_generate_roughness": true
+}
