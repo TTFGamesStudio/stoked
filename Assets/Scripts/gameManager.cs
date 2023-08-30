@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
@@ -23,6 +24,11 @@ public class gameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hourdisplay;
 
     [SerializeField] private chompHelper chompHelper;
+    
+    [SerializeField] private bool leanScareDone=false;
+    [SerializeField] private PlayableDirector leanScare;
+    [SerializeField] private bool runScaleDone=false;
+    [SerializeField] private PlayableDirector runScare;
     public bool gamePaused;
 
     public int endingSceneID = 4;
@@ -49,6 +55,19 @@ public class gameManager : MonoBehaviour
     void Update()
     {
         nullRefChecks();
+        if (monster.progress < 0.8f)
+        {
+            if (!leanScareDone)
+            {
+                int chance = (int)Random.Range(0f, 10000f);
+                Debug.Log(chance);
+                if (chance < 50)
+                {
+                    leanScareDone = true;
+                    leanScare.Play();
+                }
+            }
+        }
     }
 
     public void nextLevel()
