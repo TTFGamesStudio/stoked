@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12449074, g: 0.13007385, b: 0.11542345, a: 1}
+  m_IndirectSpecularColor: {r: 0.12449102, g: 0.130074, b: 0.115423426, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1080,6 +1080,7 @@ MonoBehaviour:
   burnRateMult: 0
   strengthBar: {fileID: 0}
   fireSound: {fileID: 0}
+  manager: {fileID: 0}
   chomp: {fileID: 0}
 --- !u!4 &142606580 stripped
 Transform:
@@ -4646,35 +4647,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 29539030}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &731042067 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5154732302721470277, guid: 8fcb9d2d43929c04f8c70c38581418d4,
-    type: 3}
-  m_PrefabInstance: {fileID: 854042271}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &731042069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731042067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
 --- !u!1001 &734216924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5980,10 +5952,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 133818584}
-    - targetCorrespondingSourceObject: {fileID: 5154732302721470277, guid: 8fcb9d2d43929c04f8c70c38581418d4,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 731042069}
   m_SourcePrefab: {fileID: 100100000, guid: 8fcb9d2d43929c04f8c70c38581418d4, type: 3}
 --- !u!1001 &862649205
 PrefabInstance:
@@ -12223,10 +12191,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 393.1
+  m_fontSize: 72
   m_fontSizeBase: 393.1
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -13720,6 +13688,8 @@ MonoBehaviour:
   f: {fileID: 0}
   logOnFireSound: {fileID: 0}
   chomp: {fileID: 0}
+  fireBurstPrefab: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!1001 &2111901686
 PrefabInstance:
   m_ObjectHideFlags: 0

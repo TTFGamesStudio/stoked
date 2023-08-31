@@ -88,7 +88,12 @@ public class monsterController : MonoBehaviour
 
     void updateProgress()
     {
-        progress += Time.deltaTime * (speed * (1-fire.fireStr()));
+        float mult = 1;
+        if (manager.flashLightOn)
+        {
+            mult = 0.5f;
+        }
+        progress += (Time.deltaTime * (speed * (1-fire.fireStr()))*mult);
     }
     
     private void OnTriggerEnter(Collider other)

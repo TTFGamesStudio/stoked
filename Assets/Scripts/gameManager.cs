@@ -25,10 +25,21 @@ public class gameManager : MonoBehaviour
 
     [SerializeField] private chompHelper chompHelper;
     
+    [Header("Scares")]
     [SerializeField] private bool leanScareDone=false;
     [SerializeField] private PlayableDirector leanScare;
     [SerializeField] private bool runScaleDone=false;
     [SerializeField] private PlayableDirector runScare;
+
+    [Header("Flashlight")] 
+    [SerializeField] public bool flashLightOn = false;
+
+    [SerializeField] private float flashlightBattery = 1.0f;
+
+    [SerializeField] private float flashlightBatteryDrain = 0.1f;
+    [SerializeField] private Light flashLight;
+    [SerializeField] private float flashlightIntensity;
+    
     public bool gamePaused;
 
     public int endingSceneID = 4;
@@ -38,6 +49,7 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        flashlightIntensity = flashLight.intensity;
         if(instance == null)
         {
             instance = this;
@@ -55,18 +67,28 @@ public class gameManager : MonoBehaviour
     void Update()
     {
         nullRefChecks();
+        FlashLight();
+        
+        //do all the scares
         if (monster.progress < 0.8f)
         {
-            if (!leanScareDone)
-            {
+            
                 int chance = (int)Random.Range(0f, 10000f);
                 Debug.Log(chance);
-                if (chance < 50)
+                if (chance < 50 && !leanScareDone)
                 {
                     leanScareDone = true;
                     leanScare.Play();
                 }
-            }
+                else
+                {
+                    if (!runScaleDone && chance < 50)
+                    {
+                        runScaleDone = true;
+                        runScare.Play();
+                    }
+                }
+            
         }
     }
 
@@ -84,6 +106,43 @@ public class gameManager : MonoBehaviour
         }
     }
 
+    private void FlashLight()
+    {
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            if (flashlightBattery > 0)
+            {
+                if (flashLightOn)
+                {
+                    flashLightOn = false;
+                }
+                else
+                {
+                    flashLightOn = true;
+                }
+            }
+        }
+        
+        if (flashLightOn)
+        {
+            flashLight.intensity = flashlightIntensity;
+            if (flashlightBattery < .1f)
+            {
+                flashLight.intensity = Random.Range(0, flashlightIntensity);
+            }
+
+            flashlightBattery -= Time.deltaTime * flashlightBatteryDrain;
+            if (flashlightBattery <= 0)
+            {
+                flashLightOn = false;
+            }
+        }
+
+        if (flashLightOn == false)
+        {
+            flashLight.intensity = 0;
+        }
+    }
     public void pauseGame()
     {
         gamePaused = true;
@@ -96,7 +155,8 @@ public class gameManager : MonoBehaviour
     
     //actually load into the level
      void loadLevel()
-    {
+     {
+         flashlightBattery = 1f;
         SceneManager.LoadScene(3);
         updateData();
     }
