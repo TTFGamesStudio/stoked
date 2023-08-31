@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
 {
@@ -30,10 +31,15 @@ public class gameManager : MonoBehaviour
     [SerializeField] private PlayableDirector leanScare;
     [SerializeField] private bool runScaleDone=false;
     [SerializeField] private PlayableDirector runScare;
+    [SerializeField] private bool crowDone=false;
+    [SerializeField] private PlayableDirector crowAnim;
+    
 
     [Header("Flashlight")] 
     [SerializeField] public bool flashLightOn = false;
 
+    [SerializeField] private Image flashLightIcon;
+    
     [SerializeField] private float flashlightBattery = 1.0f;
 
     [SerializeField] private float flashlightBatteryDrain = 0.1f;
@@ -74,21 +80,30 @@ public class gameManager : MonoBehaviour
         {
             
                 int chance = (int)Random.Range(0f, 10000f);
-                Debug.Log(chance);
-                if (chance < 50 && !leanScareDone)
+                if (chance < 10 && !leanScareDone)
                 {
+                    Debug.Log(chance);
                     leanScareDone = true;
                     leanScare.Play();
                 }
                 else
                 {
-                    if (!runScaleDone && chance < 50)
+                    if (!runScaleDone && chance < 10)
                     {
                         runScaleDone = true;
                         runScare.Play();
                     }
                 }
             
+        }
+
+        if (Random.Range(0f, 12000) < 12)
+        {
+            if (!crowDone)
+            {
+                crowDone = true;
+                crowAnim.Play();
+            }
         }
     }
 
@@ -125,6 +140,8 @@ public class gameManager : MonoBehaviour
         
         if (flashLightOn)
         {
+            flashLightIcon.fillAmount = flashlightBattery;
+            flashLightIcon.color = new Color(1, 1, 1, 1);
             flashLight.intensity = flashlightIntensity;
             if (flashlightBattery < .1f)
             {
@@ -140,6 +157,7 @@ public class gameManager : MonoBehaviour
 
         if (flashLightOn == false)
         {
+            flashLightIcon.color = new Color(0, 0, 0, 0);
             flashLight.intensity = 0;
         }
     }
@@ -189,6 +207,11 @@ public class gameManager : MonoBehaviour
             clock = GameObject.FindObjectOfType<clockManager>();
         }
 
+        if (flashLightIcon == null)
+        {
+            flashLightIcon = GameObject.Find("FlashLightIcon").GetComponent<Image>();
+        }
+        
         if(clock !=null)
         {
             clock.data.isAm = currentData.isAM;

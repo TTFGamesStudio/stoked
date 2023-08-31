@@ -18,7 +18,7 @@ public class fireController : MonoBehaviour
     [SerializeField] private float logTime = 20;
     [SerializeField] private AnimationCurve burnCurve;
     [SerializeField] public float burnRateMult;
-    [SerializeField] private Slider strengthBar;
+    [SerializeField] private Image strengthBar;
     [SerializeField] private AudioSource fireSound;
     [SerializeField] private gameManager manager;
     public chompHelper chomp;
@@ -49,7 +49,7 @@ public class fireController : MonoBehaviour
                 woodBurnTime = 0;
             }
 
-            strengthBar.value = fireStrength;
+            strengthBar.fillAmount = fireStrength;
             fireSound.volume = fireStrength;
         }
     }
